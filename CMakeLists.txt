@@ -3,7 +3,7 @@ project(two_semester_Cplusplus_programming)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(two_semester_Cplusplus_programming main.cpp)
+add_executable(two_semester_Cplusplus_programming test.cpp)
 
 add_executable(bucket_sort AiSD_C/bucket_sort.c)
 add_executable(k_statistik AiSD_C/k_statistik.c)
