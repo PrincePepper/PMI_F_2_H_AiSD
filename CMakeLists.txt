@@ -5,7 +5,8 @@ set(CMAKE_CXX_STANDARD 20)
 
 
 add_executable(1_Bottle_all Main/1_Bottle_all.cpp)
-
+add_executable(2_greedy_sequence Main/2_greedy_sequence.cpp)
+add_executable(4_heapsort Main/4_heapsort.cpp)
 
 add_executable(bucket_sort AiSD_C/bucket_sort.c)
 add_executable(k_statistik AiSD_C/k_statistik.c)

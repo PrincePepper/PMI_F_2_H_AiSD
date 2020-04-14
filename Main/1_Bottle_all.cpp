@@ -15,11 +15,11 @@ class Heap {
 public:
     explicit Heap(unsigned int SizeHeap);  // конструктор кучи,
     void push_heap(long long int);  // добавление элемента кучи c сортировкой
-
     long long pop_heap();  // удаление вершины (максимального элемента)
     void heapify(long long int);  // упорядочение кучи
     long long element_heap(long long int element); // доступ к элементам кучи(изменять нельзя)
     void printOut();  // вывод элементов кучи в форме массива
+    void push_heapNoSort(long long int value);   // добавление элемента кучи
 };
 
 //Конструктор кучи
@@ -44,7 +44,12 @@ void Heap::push_heap(long long int n) {
     }
     HeapSize++;
 }
-
+void Heap::push_heapNoSort(long long int value) {
+    long long int i;
+    i = HeapSize;
+    h[i] = value;
+    HeapSize++;
+}
 void Heap::heapify(long long int i) {
     long long int leftChild, rightChild;
     long long int largestChild;
