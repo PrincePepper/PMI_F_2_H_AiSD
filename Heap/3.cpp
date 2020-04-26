@@ -17,13 +17,18 @@ public:
     long long int pop_heap();  // удаление вершины (максимального элемента)
     void heapify(long long int index);  // упорядочение кучи
     long long int element_heap(long long int element); // доступ к элементам кучи(изменять нельзя)
-    void printOut();  // вывод элементов кучи в форме массива
+    void printOut();// вывод элементов кучи в форме массива
+    long long int size();
 };
 
 //Конструктор кучи
 LEFT_MAX::LEFT_MAX(long long int SizeHeap) {
     h = new long long int[SizeHeap];
     HeapSize = 0;
+}
+
+long long int LEFT_MAX::size() {
+    return HeapSize;
 }
 
 void LEFT_MAX::push_heap(long long int value) {
@@ -97,6 +102,7 @@ public:
     void heapify(long long int index);  // упорядочение кучи
     long long int element_heap(long long int element); // доступ к элементам кучи(изменять нельзя)
     void printOut();  // вывод элементов кучи в форме массива
+    long long int size();
 };
 
 //Конструктор кучи
@@ -105,6 +111,9 @@ RIGHT_MIN::RIGHT_MIN(long long int SizeHeap) {
     HeapSize = 0;
 }
 
+long long int RIGHT_MIN::size() {
+    return HeapSize;
+}
 
 void RIGHT_MIN::push_heap(long long int value) {
     long long int i = HeapSize, parent, temp;
@@ -183,30 +192,23 @@ int main() {
 
     for (int i = 0; i < N; i++) {
         fin >> element;
-        if (i == 0) {
+        if (element <= leftMax.element_heap(0)) {
             leftMax.push_heap(element);
-            mass_res[i]=leftMax.element_heap(0);
-            continue;
-        }
+        } else
+            rightMin.push_heap(element);
 
-        if (i % 2 != 0) {
-            if (element < leftMax.element_heap(0)) {
-                rightMin.push_heap(leftMax.pop_heap());
-                leftMax.push_heap(element);
-            } else
-                rightMin.push_heap(element);
-        } else if (i % 2 == 0) {
-            if (element > rightMin.element_heap(0)) {
-                leftMax.push_heap(rightMin.pop_heap());
-                rightMin.push_heap(element);
-            } else
-                leftMax.push_heap(element);
-        }
+        if (leftMax.size() < rightMin.size()) {
+            leftMax.push_heap(rightMin.pop_heap());
+        } else
+            rightMin.push_heap(leftMax.pop_heap());
 
-        mass_res[i]=leftMax.element_heap(0);
+        mass_res[i] = leftMax.element_heap(0);
+        leftMax.printOut();
+        cout << endl;
     }
-    for(int i = 0 ; i<N;i++){
-        fout<<mass_res[i]<<" ";
+
+    for (int i = 0; i < N; i++) {
+        fout << mass_res[i] << " ";
     }
 
 }
