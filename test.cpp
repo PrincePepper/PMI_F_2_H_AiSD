@@ -1,47 +1,51 @@
+//
+// Created by User on 03.05.2020.
+//
 #include <iostream>
-#include <fstream>
 #include <vector>
-#include <numeric>
-#include <algorithm>
+#include <fstream>
 
 using namespace std;
 
-vector<int> heap;
-
-void sift_up(int index){
-    if(index==0)
-        return;
-    int par_ind = (index-1)/2;
-    if(heap[par_ind],heap[index]){
-        swap(heap[par_ind],heap[index]);
-        sift_up(par_ind);
+string getLongestCommonSubsequence(const string &a, const string &b) {
+    vector<vector<int> > max_len;
+    max_len.resize(a.size() + 1);
+    for (int i = 0; i <= static_cast<int>(a.size()); i++)
+        max_len[i].resize(b.size() + 1);
+    for (int i = static_cast<int>(a.size()) - 1; i >= 0; i--) {
+        for (int j = static_cast<int>(b.size()) - 1; j >= 0; j--) {
+            if (a[i] == b[j]) {
+                max_len[i][j] = 1 + max_len[i + 1][j + 1];
+            } else {
+                max_len[i][j] = max(max_len[i + 1][j], max_len[i][j + 1]);
+            }
+        }
     }
+    string res;
+    for (int i = 0, j = 0; max_len[i][j] != 0 && i < static_cast<int>(a.size()) && j < static_cast<int>(b.size());) {
+        if (a[i] == b[j]) {
+            res.push_back(a[i]);
+            i++;
+            j++;
+        } else {
+            if (max_len[i][j] == max_len[i + 1][j])
+                i++;
+            else
+                j++;
+        }
+    }
+    return res;
 }
 
-void sift_down(int index){
-    int ind_left = 2 * index + 1;
-    int ind_right = 2 * index + 2;
-    int new_ind = 0;
-    if(heap[ind_left]>heap[ind_right])
-        new_ind=ind_left;
-    else
-        new_ind=ind_right;
-    if(heap[new_ind]>heap[ind_right])
-        new_ind=ind_left;
-    else
-        new_ind=ind_right;
-}
-
-void add_new(int value){
-    heap.push_back(value);
-    sift_up(heap.size()-1);
-}
-
-
-
-int max(){
-    int MAX = heap[0];
-}
 int main() {
+    ifstream fin;
+    ofstream fout;
+    fin.open("input.txt");
+    fout.open("output.txt");
+    string a;
+    string b;
+    fin >> a >> b;
 
+    string c = getLongestCommonSubsequence(a, b);
+    fout << c;
 }
