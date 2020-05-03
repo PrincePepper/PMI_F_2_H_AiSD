@@ -7,6 +7,7 @@ set(CMAKE_CXX_STANDARD 20)
 add_executable(1_stairs Main/1_stairs.cpp)
 add_executable(2_nails Main/2_nails.cpp)
 add_executable(3_piggy_bank Main/3_piggy_bank.cpp)
+add_executable(4_largest_subsequence Main/4_largest_subsequence.cpp)
 #heap tasks
 add_executable(1_Bottle_all Heap/1_Bottle_all.cpp)
 add_executable(2_greedy_sequence Heap/2_greedy_sequence.cpp)
