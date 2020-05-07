@@ -9,20 +9,12 @@
 using namespace std;
 
 string Subsequence(const string &a, const string &b) {
-    vector<vector<int>> res_mass;
     string res;
-    int h, w;
-    if (a < b) {
-        res_mass.resize(b.size() + 1, vector<int>(a.size() + 1, 0));
-        h = b.size();
-        w = a.size();
-    } else {
-        res_mass.resize(a.size() + 1, vector<int>(b.size() + 1, 0));
-        h = a.size();
-        w = b.size();
-    }
-    for (int i = 0; i < h; i++) {
-        for (int j = 0; j < w; j++) {
+
+    vector<vector<int>> res_mass(a.size() + 1, vector<int>(b.size() + 1, 0));
+
+    for (int i = 0; i < a.size(); i++) {
+        for (int j = 0; j < b.size(); j++) {
             if (a[i] == b[j]) {
                 res_mass[i + 1][j + 1] = 1 + res_mass[i][j];
             } else {
@@ -30,8 +22,7 @@ string Subsequence(const string &a, const string &b) {
             }
         }
     }
-    int i = h, j = w;
-    while (i > 0 && j > 0) {
+    for (int i = a.size(), j = b.size(); i > 0 && j > 0;) {
         if (a[i - 1] == b[j - 1]) {
             res.push_back(a[i - 1]);
             i--;
@@ -43,6 +34,7 @@ string Subsequence(const string &a, const string &b) {
                 j--;
         }
     }
+
     reverse(res.begin(), res.end());
     return res;
 }
