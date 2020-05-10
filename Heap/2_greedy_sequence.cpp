@@ -10,10 +10,10 @@ using namespace std;
 
 typedef pair<int, int> valueAndindex;
 
-bool comp(valueAndindex first_element, valueAndindex second_element) {
+bool comparator(valueAndindex first_element, valueAndindex second_element) {
     if (first_element.second == second_element.second)
-        return (first_element.first < second_element.first);
-    return (first_element.second < second_element.second);
+        return first_element.first < second_element.first;
+    return first_element.second < second_element.second;
 }
 
 //Реализация класса кучи
@@ -98,7 +98,7 @@ int main() {
     }
 
     vector<valueAndindex> heap_list = heap.out();
-    sort(heap_list.begin(), heap_list.end(), comp);
-    for (auto & i : heap_list)
+    sort(heap_list.begin(), heap_list.end(), comparator);
+    for (auto &i : heap_list)
         fout << i.first << " ";
 }

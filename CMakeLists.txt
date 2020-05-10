@@ -17,9 +17,11 @@ add_executable(4_heapsort Heap/4_heapsort.cpp)
 #sots tasks
 add_executable(bucket_sort AiSD_C/bucket_sort.c)
 add_executable(k_statistik AiSD_C/k_statistik.c)
+add_executable(k_statistil AiSD_C/k_statistil.cpp)
 add_executable(lin_logsort AiSD_C/lin_logsort.c)
 add_executable(merge_sort AiSD_C/merge_sort.c)
 add_executable(search_inversion AiSD_C/search_inversion.c)
+add_executable(inversion AiSD_C/merge_sort.cpp)
 add_executable(square_sort AiSD_C/square_sort.c)
 
 

@@ -1,4 +1,4 @@
-# two_semester_Cplusplus_programming
+# 2 семенстр по АиСД
 
 ###Контесты:
 
