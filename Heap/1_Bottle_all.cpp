@@ -4,7 +4,6 @@
 #include <iostream>
 #include <fstream>
 
-
 using namespace std;
 
 //Реализация класса кучи

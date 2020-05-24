@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 3.15)
 project(two_semester_Cplusplus_programming)
 
 set(CMAKE_CXX_STANDARD 20)
-
+#sots tasks
+add_executable(1_Permutations Main/1_Permutations.cpp)
 #dynamic programming tasks
 add_executable(1_stairs DynamicProgramming/1_stairs.cpp)
 add_executable(2_nails DynamicProgramming/2_nails.cpp)
@@ -15,7 +16,7 @@ add_executable(1_Bottle_all Heap/1_Bottle_all.cpp)
 add_executable(2_greedy_sequence Heap/2_greedy_sequence.cpp)
 add_executable(3 Heap/3.cpp)
 add_executable(4_heapsort Heap/4_heapsort.cpp)
-#sots tasks
+#sorts tasks
 add_executable(bucket_sort AiSD_C/bucket_sort.c)
 add_executable(k_statistik AiSD_C/k_statistik.c)
 add_executable(k_statistil AiSD_C/k_statistil.cpp)
