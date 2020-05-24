@@ -4,12 +4,12 @@ project(two_semester_Cplusplus_programming)
 set(CMAKE_CXX_STANDARD 20)
 
 #dynamic programming tasks
-add_executable(1_stairs Main/1_stairs.cpp)
-add_executable(2_nails Main/2_nails.cpp)
-add_executable(3_piggy_bank Main/3_piggy_bank.cpp)
-add_executable(4_largest_subsequence Main/4_largest_subsequence.cpp)
-add_executable(5_seating_passengers Main/5_seating_passengers.cpp)
-add_executable(6_vasya_constructor_numbers Main/6_vasya_constructor_numbers.cpp)
+add_executable(1_stairs DynamicProgramming/1_stairs.cpp)
+add_executable(2_nails DynamicProgramming/2_nails.cpp)
+add_executable(3_piggy_bank DynamicProgramming/3_piggy_bank.cpp)
+add_executable(4_largest_subsequence DynamicProgramming/4_largest_subsequence.cpp)
+add_executable(5_seating_passengers DynamicProgramming/5_seating_passengers.cpp)
+add_executable(6_vasya_constructor_numbers DynamicProgramming/6_vasya_constructor_numbers.cpp)
 #heap tasks
 add_executable(1_Bottle_all Heap/1_Bottle_all.cpp)
 add_executable(2_greedy_sequence Heap/2_greedy_sequence.cpp)
