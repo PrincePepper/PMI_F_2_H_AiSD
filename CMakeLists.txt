@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 3.15)
 project(two_semester_Cplusplus_programming)
 
 set(CMAKE_CXX_STANDARD 20)
-#sots tasks
+#brute force
+add_executable(2_Answers_the_test Main/2_Answers_the_test.cpp)
 add_executable(1_Permutations Main/1_Permutations.cpp)
 #dynamic programming tasks
 add_executable(1_stairs DynamicProgramming/1_stairs.cpp)
@@ -28,3 +29,10 @@ add_executable(square_sort AiSD_C/square_sort.c)
 
 
 add_executable(two_semester_Cplusplus_programming test.cpp)
+
+cmake_minimum_required(VERSION 3.15)
+project(untitled C)
+
+set(CMAKE_C_STANDARD 99)
+#   здесь тестовый код
+add_executable(test test.c)
