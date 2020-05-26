@@ -33,11 +33,11 @@ int median_filter(int datum) {
     printf("\n%d\n", datpoint->value);
     datpoint->value = datum;                           /* Copy in new datum */
     successor = datpoint->point;                       /* Save pointer to old value's successor */
-    median = &big;                                     /* Median initially to first in chain */
+    median = &big;                                     /* Median initially to setlist_A in chain */
     scanold = NULL;                                    /* Scanold initially null. */
-    scan = &big;                                       /* Points to pointer to first (largest) datum in chain */
+    scan = &big;                                       /* Points to pointer to setlist_A (largest) datum in chain */
 
-    /* Handle chain-out of first item in chain as special case */
+    /* Handle chain-out of setlist_A item in chain as special case */
     if (scan->point == datpoint) {
         scan->point = successor;
     }

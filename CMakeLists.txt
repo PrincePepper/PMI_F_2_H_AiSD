@@ -3,6 +3,7 @@ project(two_semester_Cplusplus_programming)
 
 set(CMAKE_CXX_STANDARD 20)
 #brute force
+add_executable(3_SwapAmount Main/3_SwapAmount.cpp)
 add_executable(2_Answers_the_test Main/2_Answers_the_test.cpp)
 add_executable(1_Permutations Main/1_Permutations.cpp)
 #dynamic programming tasks
