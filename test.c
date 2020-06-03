@@ -1,93 +1,93 @@
-// H. Sergio A. Fjodorov
-
+#include <stdint-gcc.h>
 #include <stdio.h>
-#include <string.h>
 
-#define MAX 10
-#define UCHAR unsigned char
 
-int n;
-UCHAR strings[MAX][100];
-UCHAR chars[MAX][MAX + 1];
-int wchars[MAX][MAX];
+#define STOPPER 0                                      /* Smaller than any datum */
+#define    MEDIAN_FILTER_SIZE    (5)
 
-UCHAR res[MAX], mres[MAX];
-int cntres, mcntres, wres, mwres;
-int used[256];
+int median_filter(int datum) {
+    struct pair {
+        struct pair *point;                              /* Pointers forming list linked in sorted order */
+        int value;                                   /* Values to sort */
+    };
+    static struct pair buffer[MEDIAN_FILTER_SIZE] = {0}; /* Buffer of nwidth pairs */
+    static struct pair *datpoint = buffer;               /* Pointer into circular buffer of data */
+    static struct pair small = {NULL, STOPPER};          /* Chain stopper */
+    static struct pair big = {&small, 0};                /* Pointer to head (largest) of linked list.*/
 
-void
-find(int idx)
-{
-    if (cntres > mcntres || (cntres == mcntres && wres < mwres)) {
-        memcpy(mres, res, sizeof(res));
-        mcntres = cntres;
-        mwres = wres;
-    }
-
-    if (idx == n)
-        return;
-
-    UCHAR *ch = chars[idx];
-    int *w = wchars[idx];
-    for (; *ch; ch++, w++) {
-        if (used[*ch])
-            continue;
-        used[*ch] = 1;
-        cntres++;
-        wres += *w;
-        res[idx] = *ch;
-
-        find(idx + 1);
-
-        res[idx] = 0;
-        wres -= *w;
-        cntres--;
-        used[*ch] = 0;
-    }
-
-    if (mcntres < cntres + n - idx)
-        find(idx + 1);
-}
-
-int
-main()
-{
-    FILE *fin = fopen("input.txt", "rt");
-    FILE *fout = fopen("output.txt", "wt");
+    struct pair *successor;                              /* Pointer to successor of replaced data item */
+    struct pair *scan;                                   /* Pointer used to scan down the sorted list */
+    struct pair *scanold;                                /* Previous value of scan */
+    struct pair *median;                                 /* Pointer to median */
     int i;
 
-    fscanf(fin, "%d", &n);
-    for (i = 0; i < n; i++)
-        fscanf(fin, "%s", strings[i]);
+    if (datum == STOPPER) {
+        datum = STOPPER + 1;                             /* No stoppers allowed. */
+    }
+//    printf("%d %d\n",datpoint,buffer);
+    if ((++datpoint - buffer) >= MEDIAN_FILTER_SIZE) {
+        datpoint = buffer;                               /* проход по массиву*/
+    }
+    datpoint->value = datum;                           /* Copy in new datum */
+    successor = datpoint->point;                       /* Save pointer to old value's successor */
+    median = &big;                                     /* Median initially to first in chain */
+    scanold = NULL;                                    /* Scanold initially null. */
+    scan = &big;                                       /* Points to pointer to first (largest) datum in chain */
 
-    for (i = 0; i < n; i++) {
-        UCHAR *str = strings[i];
-        UCHAR *ch = chars[i];
-        int *wch = wchars[i];
-        int used[256];
+    /* Handle chain-out of first item in chain as special case */
+    if (scan->point == datpoint) {
+        scan->point = successor;
+    }
+    scanold = scan;                                     /* Save this pointer and   */
+    scan = scan->point;                                /* step down chain */
 
-        memset(used, 0, sizeof(used));
-
-        for (; *str; str++) {
-            if (used[*str])
-                continue;
-            used[*str] = 1;
-            *ch++ = *str;
-            *wch++ = str - strings[i];
+    /* Loop through the chain, normal loop exit via break. */
+    for (i = 0; i < MEDIAN_FILTER_SIZE; ++i) {
+        /* Handle odd-numbered item in chain  */
+        if (scan->point == datpoint) {
+            scan->point = successor;                      /* Chain out the old datum.*/
         }
+
+        if (scan->value < datum)                        /* If datum is larger than scanned value,*/
+        {
+            datpoint->point = scanold->point;             /* Chain it in here.  */
+            scanold->point = datpoint;                    /* Mark it chained in. */
+            datum = STOPPER;
+        };
+
+        /* Step median pointer down chain after doing odd-numbered element */
+        median = median->point;                       /* Step median pointer.  */
+        if (scan == &small) {
+            break;                                      /* Break at end of chain  */
+        }
+        scanold = scan;                               /* Save this pointer and   */
+        scan = scan->point;                           /* step down chain */
+
+        /* Handle even-numbered item in chain.  */
+        if (scan->point == datpoint) {
+            scan->point = successor;
+        }
+
+        if (scan->value < datum) {
+            datpoint->point = scanold->point;
+            scanold->point = datpoint;
+            datum = STOPPER;
+        }
+
+        if (scan == &small) {
+            break;
+        }
+
+        scanold = scan;
+        scan = scan->point;
+    }
+    return median->value;
+}
+
+int main() {
+    int mass[9] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    for (int i = 0; i < 9; i++) {
+        printf("%d ", median_filter(mass[i]));
     }
 
-    find(0);
-
-    for (i = 0; i < n; i++) {
-        UCHAR *str = strings[i];
-        for (; *str; str++) {
-            if (mres[i] == *str) {
-                mres[i] = 0;
-                fprintf(fout, "&");
-            }
-            fprintf(fout, "%c", *str);
-        }
-        fprintf(fout, "\n");
-    }
 }

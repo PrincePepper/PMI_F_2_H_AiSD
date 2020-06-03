@@ -3,12 +3,12 @@ project(two_semester_Cplusplus_programming)
 
 set(CMAKE_CXX_STANDARD 20)
 #brute force
-add_executable(4_ Main/4_.cpp)
-add_executable(6_ Main/6_.cpp)
-add_executable(7_ Main/7_.cpp)
-add_executable(3_SwapAmount Main/3_SwapAmount.cpp)
-add_executable(2_Answers_the_test Main/2_Answers_the_test.cpp)
-add_executable(1_Permutations Main/1_Permutations.cpp)
+add_executable(4_ Permutations/4_.cpp)
+add_executable(6_ Permutations/6_.cpp)
+add_executable(7_ Permutations/7_.cpp)
+add_executable(3_SwapAmount Permutations/3_SwapAmount.cpp)
+add_executable(2_Answers_the_test Permutations/2_Answers_the_test.cpp)
+add_executable(1_Permutations Permutations/1_Permutations.cpp)
 #dynamic programming tasks
 add_executable(1_stairs DynamicProgramming/1_stairs.cpp)
 add_executable(2_nails DynamicProgramming/2_nails.cpp)
