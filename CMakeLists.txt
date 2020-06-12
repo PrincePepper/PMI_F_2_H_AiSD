@@ -3,8 +3,8 @@ project(two_semester_Cplusplus_programming)
 
 set(CMAKE_CXX_STANDARD 20)
 #hashmap
-add_executable(1_h Hashmap/1.cpp)
-add_executable(2_h Hashmap/2.cpp)
+add_executable(1_h Hashmap&AVL/1.cpp)
+add_executable(2_h Hashmap&AVL/2.cpp)
 #brute force
 add_executable(4_ Permutations/4_too_many_ways.cpp)
 add_executable(6_ Permutations/6_word_cubes.cpp)
