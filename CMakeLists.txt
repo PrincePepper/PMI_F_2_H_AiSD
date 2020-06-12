@@ -2,10 +2,13 @@ cmake_minimum_required(VERSION 3.15)
 project(two_semester_Cplusplus_programming)
 
 set(CMAKE_CXX_STANDARD 20)
+#hashmap
+add_executable(1_h Hashmap/1.cpp)
+add_executable(2_h Hashmap/2.cpp)
 #brute force
-add_executable(4_ Permutations/4_.cpp)
-add_executable(6_ Permutations/6_.cpp)
-add_executable(7_ Permutations/7_.cpp)
+add_executable(4_ Permutations/4_too_many_ways.cpp)
+add_executable(6_ Permutations/6_word_cubes.cpp)
+add_executable(7_ "Permutations/7_hot-keys[NOT SOLVED].cpp")
 add_executable(3_SwapAmount Permutations/3_SwapAmount.cpp)
 add_executable(2_Answers_the_test Permutations/2_Answers_the_test.cpp)
 add_executable(1_Permutations Permutations/1_Permutations.cpp)
