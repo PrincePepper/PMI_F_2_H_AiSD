@@ -5,7 +5,7 @@
 #include <fstream>
 #include <vector>
 #include <algorithm>
-#include <cmath>
+
 
 using namespace std;
 
@@ -20,13 +20,13 @@ private:
 public:
     explicit Hash(long long int key, long long int value);
 
-    static long long int hashFunction(long long int n);
+     long long int hashFunction(long long int n);
 
     Hash *insertH(Hash **hashTable, long long int n);
 
     void deleteH(Hash **hashTable, long long int n);
 
-    Hash *findH(Hash **hashTable, long long int n);
+//    Hash *findH(Hash **hashTable, long long int n);
 
     void printH(Hash **hashTable);
 };
@@ -38,13 +38,13 @@ Hash::Hash(long long int key, long long int value) {
 }
 
 long long int Hash::hashFunction(long long int value) {
-    return value% 10000;
+    return value % 10;
 }
 
 Hash *Hash::insertH(Hash **hashTable, long long int n) {
     long long int bucket = hashFunction(n);
     Hash *p0 = hashTable[bucket];
-    while (p0 && p0->value != n){
+    while (p0 && p0->value != n) {
         p0 = p0->next;
     }
     if (p0 && n == p0->value) {
@@ -77,12 +77,12 @@ void Hash::deleteH(Hash **hashTable, long long int n) {
     if (p0)
         p0->next = p->next;
     else
-        hashTable[hashFunction(n)] = p->next;
+        hashTable[bucket] = p->next;
 }
 
 void Hash::printH(Hash **hashTable) {
     vector<long long int> mass;
-    for (long long int i = 0; i < 10000; i++) {
+    for (long long int i = 0; i < 10; i++) {
         Hash *p = hashTable[i];
         if (p != nullptr) {
             while (p) {
@@ -106,7 +106,7 @@ int main() {
         fin >> k;
         mass.push_back(k);
     }
-    Hash *root[10000] = {nullptr};
+    Hash *root[10] = {nullptr};
     Hash hash(1, 1);
     for (long long int mas : mass) {
         if (mas > 0)

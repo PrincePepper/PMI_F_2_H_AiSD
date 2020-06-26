@@ -17,7 +17,6 @@ class Node {
     Node *right;
 public:
     explicit Node(long long int k);
-
     static long long int height(Node *p); //высота
     static long long int balanceFactor(Node *p);//вычисляет коэффициент сбалансированности узла
     static void fixheight(Node *p); //корректирует значение поля h, затронутое в процессе балансировки.
