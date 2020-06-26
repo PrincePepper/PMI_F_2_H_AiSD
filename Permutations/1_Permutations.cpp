@@ -6,7 +6,7 @@
 
 using namespace std;
 
-vector<bool> used(100);
+vector<bool> visited_v(100);
 vector<int> set(100);
 
 void combi_repeat(int n, int k) {
@@ -18,11 +18,11 @@ void combi_repeat(int n, int k) {
         return;
     }
     for (int i = 1; i <= n; i++) {
-        if (!used[i]) {
-            used[i] = true;
+        if (!visited_v[i]) {
+            visited_v[i] = true;
             set[k] = i;
             combi_repeat(n, k + 1);
-            used[i] = false;
+            visited_v[i] = false;
         }
 
     }

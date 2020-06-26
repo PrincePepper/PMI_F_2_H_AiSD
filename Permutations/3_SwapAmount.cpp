@@ -61,8 +61,8 @@ void combi_B(vector<int> &digital_b, vector<int> &p, vector<bool> &mark, int c, 
         for (int i = 0; i < p.size(); i++) {
             cur = 10 * cur + digital_b[p[i]];
         }
-//        for (auto i : setlist_A) //вывод всех перестановок А в консоль(надо закоментить перед тестом)
-//            cout << i << endl;
+//        for (auto y : setlist_A) //вывод всех перестановок А в консоль(надо закоментить перед тестом)
+//            cout << y << endl;
         if (setlist_A.find(c - cur) != setlist_A.end()) {
             fout << "YES" << endl;
             fout << c - cur << " " << cur << endl;

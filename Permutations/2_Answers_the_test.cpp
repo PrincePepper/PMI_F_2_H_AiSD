@@ -20,7 +20,7 @@ void answerthetest(int p, int q, int k) {
             int summa_sovpadeni = 0;
             for (int j = 0; j < q; j++) {
 //                cout<<answer<<endl;
-//                cout<<answer[j]<<" "<<test_string[i][j]<<endl;
+//                cout<<answer[x]<<" "<<test_string[y][x]<<endl;
                 if (answer[j] == test_string[i][j])
                     summa_sovpadeni++;
             }
