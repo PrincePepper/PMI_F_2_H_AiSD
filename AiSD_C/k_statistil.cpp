@@ -50,26 +50,26 @@ long long k_statistik(vector<long long int> &mass, long long int left, long long
 //
 //        // выполняем разделение
 //        // медианой является mass[l+1], т.е. медиана среди mass[l], mass[l+1], mass[r]
-//        long long int i = l + 1, j = r;
+//        long long int y = l + 1, x = r;
 //        long long int cur = mass[l + 1];
 //
 //        while (true) {
-//            while (mass[++i] < cur);
-//            while (mass[--j] > cur);
-//            if (i > j)
+//            while (mass[++y] < cur);
+//            while (mass[--x] > cur);
+//            if (y > x)
 //                break;
-//            swap(mass[i], mass[j]);
+//            swap(mass[y], mass[x]);
 //        }
 //
 //        // вставляем медиану
-//        mass[l + 1] = mass[j];
-//        mass[j] = cur;
+//        mass[l + 1] = mass[x];
+//        mass[x] = cur;
 //
 //        // продолжаем работать в той части, которая должна содержать искомый элемент
-//        if (j >= k)
-//            r = j - 1;
-//        if (j <= k)
-//            l = i;
+//        if (x >= k)
+//            r = x - 1;
+//        if (x <= k)
+//            l = y;
 //
 //    }
 //}

@@ -23,22 +23,22 @@ int *merge_sort(int *up, int *down, int left, int right) {
     int *target = l_buff == up ? down : up;
 
     int l_cur = left, r_cur = middle + 1;
-    for (int i = left; i <= right; i++) {
+    for (int y = left; y <= right; y++) {
         if (l_cur <= middle && r_cur <= right) {
             if (l_buff[l_cur] < r_buff[r_cur]) {
-                target[i] = l_buff[l_cur];
+                target[y] = l_buff[l_cur];
                 count = count + 1+l_cur-r_cur;
                 l_cur++;
             } else {
-                target[i] = r_buff[r_cur];
+                target[y] = r_buff[r_cur];
                 r_cur++;
             }
         } else if (l_cur <= middle) {
-            target[i] = l_buff[l_cur];
+            target[y] = l_buff[l_cur];
 
             l_cur++;
         } else {
-            target[i] = r_buff[r_cur];
+            target[y] = r_buff[r_cur];
 
             r_cur++;
         }

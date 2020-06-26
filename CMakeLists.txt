@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 3.15)
 project(two_semester_Cplusplus_programming)
 
 set(CMAKE_CXX_STANDARD 20)
+#Graphs
+add_executable(3_ Graphs/3_.cpp)
+add_executable(2_maze Graphs/2_maze.cpp)
+add_executable(1_modules Graphs/1_modules.cpp)
 #hashmap
 add_executable(1_h Hashmap&AVL/1.cpp)
 add_executable(2_h Hashmap&AVL/2.cpp)
