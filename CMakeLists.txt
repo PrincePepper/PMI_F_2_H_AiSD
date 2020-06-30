@@ -2,17 +2,21 @@ cmake_minimum_required(VERSION 3.15)
 project(two_semester_Cplusplus_programming)
 
 set(CMAKE_CXX_STANDARD 20)
+#Weighted Graphs
+add_executable(1_Dijkstra WeightedGraphs/1_Dijkstra.cpp)
 #Graphs
-add_executable(3_ Graphs/3_.cpp)
+add_executable(5_b Graphs/5_b.cpp)
+add_executable(4_eulerianCycle Graphs/4_eulerianCycle.cpp)
+add_executable(3_bureaucracy Graphs/3_bureaucracy.cpp)
 add_executable(2_maze Graphs/2_maze.cpp)
 add_executable(1_modules Graphs/1_modules.cpp)
 #hashmap
 add_executable(1_h Hashmap&AVL/1.cpp)
 add_executable(2_h Hashmap&AVL/2.cpp)
 #brute force
-add_executable(4_ Permutations/4_too_many_ways.cpp)
-add_executable(6_ Permutations/6_word_cubes.cpp)
-add_executable(7_ "Permutations/7_hot-keys[NOT SOLVED].cpp")
+add_executable(4_too_many_ways Permutations/4_too_many_ways.cpp)
+add_executable(6_word_cubes Permutations/6_word_cubes.cpp)
+add_executable(7_hot-keys "Permutations/7_hot-keys[NOT SOLVED].cpp")
 add_executable(3_SwapAmount Permutations/3_SwapAmount.cpp)
 add_executable(2_Answers_the_test Permutations/2_Answers_the_test.cpp)
 add_executable(1_Permutations Permutations/1_Permutations.cpp)
