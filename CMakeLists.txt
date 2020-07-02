@@ -3,6 +3,8 @@ project(two_semester_Cplusplus_programming)
 
 set(CMAKE_CXX_STANDARD 20)
 #Weighted Graphs
+add_executable(4_Floyd-Warshall WeightedGraphs/4_Floyd-Warshall.cpp)
+add_executable(3_SST WeightedGraphs/3_SST.cpp)
 add_executable(1_Dijkstra WeightedGraphs/1_Dijkstra.cpp)
 #Graphs
 add_executable(5_b Graphs/5_b.cpp)
