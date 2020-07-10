@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 20)
 #Weighted Graphs
 add_executable(4_Floyd-Warshall WeightedGraphs/4_Floyd-Warshall.cpp)
 add_executable(3_SST WeightedGraphs/3_SST.cpp)
-add_executable(1_Dijkstra WeightedGraphs/1_Dijkstra.cpp)
+add_executable(1_Dijkstra WeightedGraphs/1-2_Dijkstra.cpp)
 #Graphs
 add_executable(5_b Graphs/5_b.cpp)
 add_executable(4_eulerianCycle Graphs/4_eulerianCycle.cpp)
@@ -43,13 +43,3 @@ add_executable(merge_sort AiSD_C/merge_sort.c)
 add_executable(search_inversion AiSD_C/search_inversion.c)
 add_executable(inversion AiSD_C/merge_sort.cpp)
 add_executable(square_sort AiSD_C/square_sort.c)
-
-
-add_executable(two_semester_Cplusplus_programming test.cpp)
-
-cmake_minimum_required(VERSION 3.15)
-project(untitled C)
-
-set(CMAKE_C_STANDARD 99)
-#   здесь тестовый код
-add_executable(test test.c)
